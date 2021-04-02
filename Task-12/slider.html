@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<title>Slider Task</title>
+
+<style>
+.container {
+  max-width: 1480px;
+  position: relative;
+  margin: auto;
+}
+.Slides {
+    display: none;
+}
+.Slides img {
+    width: 100%;
+}
+.prev {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  background: #fbfbfb66;
+  margin-top: -22px;
+  padding: 22px;
+  color: #000;
+  font-weight: bold;
+  font-size: 50px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  background: #fbfbfb66;
+  margin-top: -22px;
+  padding: 22px;
+  color: #000;
+  font-weight: bold;
+  font-size: 50px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.slider-text {
+  text-align: center;
+}
+.slider-text h1 {
+    color: #fff;
+    padding: 18px 91px;
+    font-size: 50px;
+    width: 2 6%;
+    background: #00000075;
+    position: absolute;
+    top: 44%;
+    left: 32%;
+}
+.mover {
+    cursor: pointer;
+    height: 17px;
+    width: 21px;
+    margin: 0 2px;
+    background-color: #000;
+    border-bottom-right-radius: 9px;
+    display: inline-block;
+    border-top-left-radius: 9px;
+    transition: 0.6s ease all;
+}
+
+.active, .mover:hover {
+  background-color: #e0aa11;
+}
+</style>
+<body>
+
+<div class="container">
+    
+    <div class="Slides">
+      <img src="slider-pic-1.jpg" />
+      <div class="slider-text">
+          <h1>Slider Text Text</h1>
+      </div>
+    </div>
+  
+    <div class="Slides">
+      <img src="slider-pic-2.jpg" />
+      <div class="slider-text">
+          <h1>Slider Text Two</h1>
+      </div>
+    </div>
+  
+    <div class="Slides">
+      <img src="slider-pic-3.jpg" />
+      <div class="slider-text">
+          <h1>Slider Text Three</h1>
+      </div>
+    </div>
+  
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+  
+  <div style="text-align:center">
+    <span class="mover" onclick="currentSlide(1)"></span> 
+    <span class="mover" onclick="currentSlide(2)"></span> 
+    <span class="mover" onclick="currentSlide(3)"></span> 
+  </div>
+</body>
+</html>
+
+<script>
+    var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("Slides");
+  var movers = document.getElementsByClassName("mover");
+  if (n > slides.length) {slideIndex = 1} 
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none"; 
+  }
+  for (i = 0; i < movers.length; i++) {
+      movers[i].className = movers[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block"; 
+  movers[slideIndex-1].className += " active";
+}
+</script>
